@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quakezones/screens/home_screen.dart';
 
 main(List<String> args) {
   runApp(App());
@@ -10,7 +11,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Homescreen(),
+      home: HomeScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
