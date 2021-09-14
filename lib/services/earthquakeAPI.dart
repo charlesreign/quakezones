@@ -1,3 +1,5 @@
+import 'package:quakezones/utils/type_helper.dart';
+
 class EarthQuakeAPI {
   String _type;
   Metadata _metadata;
@@ -293,29 +295,29 @@ class Properties {
   set title(String title) => _title = title;
 
   Properties.fromJson(Map<String, dynamic> json) {
-    _mag = json['mag'];
+    _mag = TypeHelper.toDouble(json['mag']);
     _place = json['place'];
-    _time = json['time'];
-    _updated = json['updated'];
+    _time = TypeHelper.toInt(json['time']);
+    _updated = TypeHelper.toInt(json['updated']);
     _tz = json['tz'];
     _url = json['url'];
     _detail = json['detail'];
-    _felt = json['felt'];
-    _cdi = json['cdi'];
-    _mmi = json['mmi'];
+    _felt = TypeHelper.toInt(json['felt']);
+    _cdi = TypeHelper.toDouble(json['cdi']);
+    _mmi = TypeHelper.toDouble(json['mmi']);
     _alert = json['alert'];
     _status = json['status'];
-    _tsunami = json['tsunami'];
-    _sig = json['sig'];
+    _tsunami = TypeHelper.toInt(json['tsunami']);
+    _sig = TypeHelper.toInt(json['sig']);
     _net = json['net'];
     _code = json['code'];
     _ids = json['ids'];
     _sources = json['sources'];
     _types = json['types'];
-    _nst = json['nst'];
-    _dmin = json['dmin'];
-    _rms = json['rms'];
-    _gap = json['gap'];
+    _nst = TypeHelper.toInt(json['nst']);
+    _dmin = TypeHelper.toDouble(json['dmin']);
+    _rms = TypeHelper.toDouble(json['rms']);
+    _gap = TypeHelper.toDouble(json['gap']);
     _magType = json['magType'];
     _type = json['type'];
     _title = json['title'];

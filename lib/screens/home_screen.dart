@@ -58,24 +58,28 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _handleResponse() {
     setState(() {
-      _earthquakeData.then(
-        (apiData) => apiData.features.forEach(
-          (dataItem) => {
-            _markerList.add(
-              Marker(
-                  markerId: MarkerId(dataItem.id),
-                  infoWindow: InfoWindow(
-                    title: dataItem.properties.mag.toString(),
-                    snippet: dataItem.properties.title,
-                  ),
-                  icon: BitmapDescriptor.defaultMarkerWithHue(
-                      BitmapDescriptor.hueRed),
-                  position: LatLng(dataItem.geometry.coordinates[1],
-                      dataItem.geometry.coordinates[0])),
-            )
-          },
-        ),
-      );
+      try {
+        _earthquakeData.then(
+          (apiData) => apiData.features.forEach(
+            (dataItem) => {
+              _markerList.add(
+                Marker(
+                    markerId: MarkerId(dataItem.id),
+                    infoWindow: InfoWindow(
+                      title: dataItem.properties.mag.toString(),
+                      snippet: dataItem.properties.title,
+                    ),
+                    icon: BitmapDescriptor.defaultMarkerWithHue(
+                        BitmapDescriptor.hueRed),
+                    position: LatLng(dataItem.geometry.coordinates[1],
+                        dataItem.geometry.coordinates[0])),
+              )
+            },
+          ),
+        );
+      } catch (e) {
+        print(e);
+      }
     });
   }
 }
